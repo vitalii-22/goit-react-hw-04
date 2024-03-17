@@ -1,0 +1,18 @@
+.loadMoreBtn {
+  cursor: pointer;
+  color: #fff;
+  background: blue;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  transition: scale 250ms ease-in-out;
+}
+
+.loadMoreBtn:hover,
+.loadMoreBtn:active {
+  scale: 1.1;
+}

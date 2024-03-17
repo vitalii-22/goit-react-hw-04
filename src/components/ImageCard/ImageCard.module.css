@@ -1,0 +1,11 @@
+.images {
+  object-fit: cover;
+  width: 300px;
+  height: 200px;
+  transition: scale 250ms ease-in-out;
+}
+
+.images:hover,
+.images:focus {
+  scale: 1.1;
+}
