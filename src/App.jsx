@@ -11,7 +11,7 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState('1');
+  const [pages, setPages] = useState('1');
   // const [paramsQuery, setParamsQuery] = useState('');
 
   const myApiKey = 'LJO6b4lyBmug5TFGgGqqzNoEbjceV13Vd_Ky8tHole0';
@@ -35,7 +35,7 @@ function App() {
       );
 
       setPhotos(response.data.results);
-      setPage((page += 1));
+      setPages(pages + 1);
     } catch (error) {
       setIsError(true);
     } finally {
@@ -56,7 +56,7 @@ function App() {
     // setParamsQuery(form.elements.search.value.toLowerCase());
     paramsQuery = form.elements.search.value.toLowerCase();
 
-    fetchPhotos(page);
+    fetchPhotos(pages);
 
     form.reset();
   };
@@ -68,7 +68,7 @@ function App() {
       {photos.length > 0 && <ImageGallery photos={photos} />}
       {loading && <Loader />}
       {/* {photos.length > 12 && <LoadMoreBtn onClick={fetchPhotos} />} */}
-      <LoadMoreBtn onClick={fetchPhotos} pageParam={page} />
+      <LoadMoreBtn onClick={fetchPhotos} pageParam={pages} />
     </>
   );
 }
