@@ -1,11 +1,7 @@
 import css from './LoadMoreBtn.module.css';
-const LoadMoreBtn = ({ onClick, pageParam }) => {
+const LoadMoreBtn = ({ onClick }) => {
   return (
-    <button
-      onClick={() => onClick(pageParam)}
-      className={css.loadMoreBtn}
-      type="button"
-    >
+    <button onClick={onClick} className={css.loadMoreBtn} type="button">
       Load more
     </button>
   );
