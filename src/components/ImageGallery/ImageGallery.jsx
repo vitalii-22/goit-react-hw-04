@@ -1,17 +1,17 @@
 import ImageCard from '../ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-const ImageGallery = ({ photos, onClick, liRef }) => {
+const ImageGallery = ({ photos, liRef, setImgModal }) => {
   return (
     <ul className={css.galleryList}>
       {photos.map(photo => (
         <li
           ref={liRef}
-          onClick={onClick}
+          // onClick={onClick}
           className={css.galleryItem}
           key={photo.id}
         >
-          <ImageCard {...photo} />
+          <ImageCard {...photo} setImgModal={setImgModal} />
         </li>
       ))}
     </ul>

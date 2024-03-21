@@ -1,9 +1,11 @@
 import ReactModal from 'react-modal';
 
-const ImageModal = ({ showModal, handleRequestCloseFunc }) => {
+ReactModal.setAppElement('#root');
+
+const ImageModal = ({ imgModal, showModal, handleRequestCloseFunc }) => {
   return (
     <ReactModal isOpen={showModal} onRequestClose={handleRequestCloseFunc}>
-      <img src="" alt="" />
+      <img src={imgModal} />
     </ReactModal>
   );
 };

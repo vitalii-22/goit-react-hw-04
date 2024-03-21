@@ -16,6 +16,7 @@ function App() {
   const [query, setQuery] = useState(null);
   const [showBtn, setShowBtn] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [imgModal, setImgModal] = useState(null);
 
   const liRef = useRef();
 
@@ -61,11 +62,10 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleClickPhoto = e => {
+  useEffect(() => {
+    if (!imgModal) return;
     setShowModal(true);
-    console.log(e.target.dataset);
-    console.log(liRef.current);
-  };
+  }, [imgModal]);
 
   const handleRequestCloseFunc = () => {
     setShowModal(false);
@@ -76,17 +76,16 @@ function App() {
       <SearchBar onSubmit={handleSubmit} />
       {isError && <ErrorMessage />}
       {photos.length > 0 && (
-        <ImageGallery
-          liRef={liRef}
-          photos={photos}
-          onClick={handleClickPhoto}
-        />
+        <ImageGallery liRef={liRef} photos={photos} setImgModal={setImgModal} />
       )}
       {loading && <Loader />}
       {showBtn && <LoadMoreBtn onClick={handleClick} />}
+
       <ImageModal
+        imgModal={imgModal}
         showModal={showModal}
         handleRequestCloseFunc={handleRequestCloseFunc}
+        ariaHideApp={false}
       />
     </>
   );
