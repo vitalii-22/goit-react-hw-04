@@ -1,7 +1,7 @@
 import ImageCard from '../ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-const ImageGallery = ({ photos, liRef, setImgModal }) => {
+const ImageGallery = ({ photos, liRef, setShowModal, setImgModal }) => {
   return (
     <ul className={css.galleryList}>
       {photos.map(photo => (
@@ -11,7 +11,11 @@ const ImageGallery = ({ photos, liRef, setImgModal }) => {
           className={css.galleryItem}
           key={photo.id}
         >
-          <ImageCard {...photo} setImgModal={setImgModal} />
+          <ImageCard
+            {...photo}
+            setShowModal={setShowModal}
+            setImgModal={setImgModal}
+          />
         </li>
       ))}
     </ul>

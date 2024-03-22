@@ -9,8 +9,8 @@ const SearchBar = ({ onSubmit }) => {
           className={css.formInput}
           type="text"
           name="search"
-          //   autocomplete="off"
-          //   autofocus
+          autoComplete="off"
+          autoFocus
           placeholder="Search images and photos"
         />
         <button className={css.formButton} type="submit">

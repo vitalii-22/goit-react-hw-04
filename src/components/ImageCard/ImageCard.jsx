@@ -3,6 +3,7 @@ import css from './ImageCard.module.css';
 const ImageCard = ({
   alt_description,
   urls: { small, regular },
+  setShowModal,
   setImgModal,
 }) => {
   return (
@@ -10,6 +11,7 @@ const ImageCard = ({
       <img
         onClick={() => {
           setImgModal(regular);
+          setShowModal(true);
         }}
         className={css.images}
         src={small}
