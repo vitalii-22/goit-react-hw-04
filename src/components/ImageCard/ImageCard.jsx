@@ -3,15 +3,13 @@ import css from './ImageCard.module.css';
 const ImageCard = ({
   alt_description,
   urls: { small, regular },
-  setShowModal,
-  setImgModal,
+  handleClickImg,
 }) => {
   return (
     <div>
       <img
         onClick={() => {
-          setImgModal(regular);
-          setShowModal(true);
+          handleClickImg(regular);
         }}
         className={css.images}
         src={small}

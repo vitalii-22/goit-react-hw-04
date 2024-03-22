@@ -7,7 +7,6 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import { fetchPhotos } from './services/api';
 import ImageModal from './components/ImageModal/ImageModal';
-import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -18,15 +17,6 @@ function App() {
   const [showBtn, setShowBtn] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [imgModal, setImgModal] = useState(null);
-
-  const notify = () =>
-    toast('Please enter a search parameter!', {
-      style: {
-        borderRadius: '50px',
-        background: '#333',
-        color: '#fff',
-      },
-    });
 
   // const myApiKey = 'LJO6b4lyBmug5TFGgGqqzNoEbjceV13Vd_Ky8tHole0';
 
@@ -51,24 +41,19 @@ function App() {
     fetchResponse();
   }, [query, page]);
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  const fetchQuery = valueSearch => {
     setPage(1);
     setPhotos([]);
-
-    const form = evt.target;
-    if (form.elements.search.value.trim() === '') {
-      notify();
-      console.log(notify());
-      return;
-    }
-    setQuery(form.elements.search.value.toLowerCase());
-
-    form.reset();
+    setQuery(valueSearch);
   };
 
   const handleClick = () => {
     setPage(page + 1);
+  };
+
+  const handleClickImg = url => {
+    setShowModal(true);
+    setImgModal(url);
   };
 
   const handleRequestCloseFunc = () => {
@@ -77,15 +62,10 @@ function App() {
 
   return (
     <>
-      <Toaster />
-      <SearchBar onSubmit={handleSubmit} />
+      <SearchBar onSubmit={fetchQuery} />
       {isError && <ErrorMessage />}
       {photos.length > 0 && (
-        <ImageGallery
-          setShowModal={setShowModal}
-          photos={photos}
-          setImgModal={setImgModal}
-        />
+        <ImageGallery handleClickImg={handleClickImg} photos={photos} />
       )}
       {loading && <Loader />}
       {showBtn && <LoadMoreBtn onClick={handleClick} />}
