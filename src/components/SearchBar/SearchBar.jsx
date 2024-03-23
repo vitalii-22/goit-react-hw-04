@@ -17,7 +17,7 @@ const SearchBar = ({ onSubmit }) => {
 
     const form = evt.target;
     if (form.elements.search.value.trim() === '') {
-      console.log(notify());
+      notify();
       return;
     }
     onSubmit(form.elements.search.value.toLowerCase());
