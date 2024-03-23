@@ -17,7 +17,6 @@ const SearchBar = ({ onSubmit }) => {
 
     const form = evt.target;
     if (form.elements.search.value.trim() === '') {
-      notify;
       console.log(notify());
       return;
     }
